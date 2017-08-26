@@ -1,0 +1,28 @@
+<project name="reactor" basedir="." default="main">
+
+<target name="clean">
+    <delete dir="${classes.dir}"/>
+    <delete dir="${jar.dir}"/>
+</target>
+
+<target name="compile">
+    <mkdir dir="build/classes"/>
+    <javac srcdir="src" destdir="build/classes"/>
+</target>
+
+<target name="jar" depends="compile">
+    <mkdir dir="build/jar"/>
+    <jar destfile="build/jar/reactor.jar" basedir="build/classes">
+        <manifest>
+            <attribute name="Main-Class" value="threadPerClient/MultipleClientProtocolServer"/>
+        </manifest>
+    </jar>
+</target>
+
+<target name="run" depends="jar">
+
+</target>
+
+<target name="main" depends="run"/>
+
+</project>
